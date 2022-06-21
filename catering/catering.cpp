@@ -1,8 +1,4 @@
-//1. Dama Damanik (20.11.3642) : Menyusun coding array dan lainnya.
-//2. Rio Efrandi(20.11.3660) : Menyusun coding searching.
-//3. Ageng Nandang Pambudi(20.11.3661) : Menyusun coding sorting.
-//4. Tonik Purwanto(20.11.3652) : Mengecek hasil akhir codingan.
-//5. Azalia Syuanidha Dharmawan(20.11.3650) : Mencari bug atau kesalahan pada aplikasi.
+
 #include <iostream>
 #include <string.h>
 #include <stdlib.h>
