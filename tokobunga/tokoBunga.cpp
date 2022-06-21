@@ -123,6 +123,7 @@ void nota(int i) {
 }
 //Nota end
 
+//Queue Start
 void enqueue(int bunga, int jumlah, string nama) {
 	if(isFull()) {
 		cout<<"Antrian sudah penuh!!!\n";
