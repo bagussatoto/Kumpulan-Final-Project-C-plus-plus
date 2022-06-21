@@ -239,7 +239,7 @@ int main(){
 	main:
 	system("cls"); 
 	cout<<"\n\n=========================================================\n\n";
-	cout<<"\t\t\tTOKO BUNGA RENI!\n";
+	cout<<"\t\t\tTOKO BUNGA BAGUS !\n";
 	cout<<"=========================================================\n\n";
 	
 	cout<<"1. Menu Bunga\n";
