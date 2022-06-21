@@ -406,10 +406,10 @@ void bayar() {
 int main() {
     string pilih;
     system("cls");
-	setcolor(14);cout<<"\n\n\n\t     -! FINAL PROJECT STRUKTUR DATA !-\n\n";
+	setcolor(14);cout<<"\n\n\n\t     -! FINAL PROJECT KARYA !-\n\n";
 	// cout<<"\t\t     -! KELOMPOK 3 !- \n\n\t";
 	//cout<<"\n\t\t      -! Anggota !- \n\n\t\t 1. Nusa  |  20.11.3623 \n\t\t 2. Alan  |  20.11.3627 \n\t\t 3. Reni  |  20.11.3630 \n\t\t 4. Adit  |  20.11.3640 \n\t\t 5. Ali   |  20.11.3654 \n\n\t\t\t";setcolor(7);
-	cout <<"\n\t\t		-! Karya Mas Bagus Budi Satoto	|	21.11.4076 \n\n\t\t\t";setcolor(7);
+	cout <<"\n\t\t		-!  Mas Bagus Budi Satoto	|	21.11.4076 \n\n\t\t\t";setcolor(7);
 	for (int i = 0; i<7;i++){
 	Sleep(250);
 	cout<<".";}
