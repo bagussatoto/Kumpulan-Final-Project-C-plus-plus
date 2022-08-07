@@ -1,0 +1,431 @@
+#include <iostream>
+#include <stdlib.h>
+#include <windows.h>
+#include <string>
+#include <sstream>
+#include <ctime>
+#define max 10
+using namespace std;
+int jml_data= 0;
+bool hasil_login = false;
+struct User
+{
+    string username[5] = {"bagus"};
+    string password[5] = {"123"};
+
+} user;
+
+struct Tumpukan
+{
+    int atas;
+    int kode_barang[20];
+    string tanggal[20];
+    string nama_barang[20];
+    int total[20];
+    //int *Pointer_total[20];
+} Tumpukan;
+
+string NumberToString (int Number)
+{
+    ostringstream ss;
+    ss << Number;
+    return ss.str();
+}
+
+string tampil_tanggal()
+{
+    time_t t = time(0);
+    struct tm * timeStruct = localtime(&t);
+    int tgl = timeStruct->tm_mday;
+    int bln = timeStruct->tm_mon+1;
+    int tahun = timeStruct->tm_year+1900;
+
+    string str_tgl = NumberToString(tgl);
+    string str_bln;
+
+    switch(bln)
+    {
+
+    case 1 :
+        str_bln = "Januari";
+        break;
+    case 2 :
+        str_bln = "Februari";
+        break;
+    case 3 :
+        str_bln = "Maret";
+        break;
+    case 4 :
+        str_bln = "April";
+        break;
+    case 5 :
+        str_bln = "Mei";
+        break;
+    case 6 :
+        str_bln = "Juni";
+        break;
+    case 7 :
+        str_bln = "Juli";
+        break;
+    case 8 :
+        str_bln = "Agustus";
+        break;
+    case 9 :
+        str_bln = "September";
+        break;
+    case 10 :
+        str_bln = "Oktober";
+        break;
+    case 11 :
+        str_bln = "November";
+        break;
+    case 12 :
+        str_bln = "Desember";
+        break;
+
+    }
+
+    string str_tahun = NumberToString(tahun);
+    string tanggal = str_tgl +" "+str_bln+" "+str_tahun;
+    return tanggal;
+
+}
+
+void awal()
+{
+    Tumpukan.atas = -1;
+}
+
+int kosong()
+{
+    if(Tumpukan.atas== -1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int penuh ()
+{
+    if(Tumpukan.atas == max)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+void input()
+{
+    string tanggal = tampil_tanggal();
+
+
+
+    if (kosong()==1)
+    {
+        Tumpukan.atas++;
+        Tumpukan.tanggal[Tumpukan.atas] = tanggal;
+        cout<<"Kode Barang       : ";
+        cin>>Tumpukan.kode_barang[Tumpukan.atas];
+        cout<<"Nama Barang       : ";
+        cin>>Tumpukan.nama_barang[Tumpukan.atas];
+        cout<<"Total Barang      : ";
+        cin>>Tumpukan.total[Tumpukan.atas];
+    }
+    else if(penuh()==0)
+    {
+        Tumpukan.atas++;
+        Tumpukan.tanggal[Tumpukan.atas]=tanggal;
+        cout<<"Kode Barang       : ";
+        cin>>Tumpukan.kode_barang[Tumpukan.atas];
+        cout<<"Nama Barang       : ";
+        cin>>Tumpukan.nama_barang[Tumpukan.atas];
+        cout<<"Total Barang      : ";
+        cin>>Tumpukan.total[Tumpukan.atas];
+    }
+
+}
+
+void hapus()
+{
+    if (kosong()== 0)
+    {
+        string pilih;
+        cout<<"Hapus "<<Tumpukan.nama_barang[Tumpukan.atas]<<"? [Y/N] : ";
+        cin>>pilih;
+        if(pilih == "Y" | pilih=="y")
+        {
+            cout<<Tumpukan.nama_barang[Tumpukan.atas]<<" Berhasil Dihapus"<<endl;
+            Tumpukan.atas--;
+            Sleep(1400);
+        }
+
+
+    }
+}
+
+void ambil()
+{
+    string nama_barang;
+    int ambil_barang[100];
+    cout<<"Input Nama Barang : ";
+    cin>>nama_barang;
+    for (int i=1; i<=Tumpukan.atas; i++)
+    {
+        if(nama_barang == Tumpukan.nama_barang[i])
+        {
+            cout<<"Input Jumlah Yang Diambil : ";
+            cin>>ambil_barang[i];
+            Tumpukan.total[i] -= ambil_barang[i];
+            break;
+        }
+
+    }
+}
+
+void tampil()
+{
+    int temp =0;
+
+    if(kosong()==0)
+    {
+        cout<<"No   \tKode\tNama\tJumlah\tTanggal input\n";
+        for (int i=1; i<=Tumpukan.atas; i++)
+        {
+            cout<<""<<i<<".     "<<Tumpukan.kode_barang[i]<<"\t"<<Tumpukan.nama_barang[i]<<"\t"<<Tumpukan.total[i]<<"\t"<<Tumpukan.tanggal[i]<<"\n";
+
+           temp++;
+            jml_data=temp;
+        }
+        cout<<"----------------------------------------------\n";
+    }
+
+}
+
+void sorting_kode()
+{
+
+        int i,j,x;
+        for(i=0; i<=jml_data; i++)
+        {
+            int temp=Tumpukan.kode_barang[i];
+            j=i-1;
+
+            while((temp<Tumpukan.kode_barang[j])&&(j>=0))
+            {
+                Tumpukan.kode_barang[j+1]=Tumpukan.kode_barang[j];
+                j=j-1;
+            }
+
+            Tumpukan.kode_barang[j+1]=temp;
+        }
+
+        cout << "\nHasil Pengurutan Insertion sort : \n";
+        for(x=1; x<jml_data+1; x++)
+        {
+            cout<<x<<". \t"<<Tumpukan.kode_barang[x]<<"\t"<<Tumpukan.nama_barang[x]<<"\t"<<Tumpukan.total[x]<<"\t"<<Tumpukan.tanggal[x]<<"\n";
+
+        }
+
+
+}
+void sorting_jumlah()
+{
+
+        int i,j,x;
+        for(i=0; i<=jml_data; i++)
+        {
+            int temp=Tumpukan.total[i];
+            j=i-1;
+
+            while((temp<Tumpukan.total[j])&&(j>=0))
+            {
+                Tumpukan.total[j+1]=Tumpukan.total[j];
+                j=j-1;
+            }
+
+            Tumpukan.total[j+1]=temp;
+        }
+
+        cout << "\nHasil Pengurutan Insertion sort : \n";
+        for(x=1; x<jml_data+1; x++)
+        {
+            cout<<x<<". \t"<<Tumpukan.kode_barang[x]<<"\t"<<Tumpukan.nama_barang[x]<<"\t"<<Tumpukan.total[x]<<"\t"<<Tumpukan.tanggal[x]<<"\n";
+
+        }
+
+}
+
+void sorting()
+{
+    int pilih_sorting, jenis_sorting;
+    cout<<"1. Sorting berdasarkan kode barang \n";
+    cout<<"2. Sorting berdasarkan jumlah barang \n\n";
+    cout<<"pilih [1 / 2] : ";
+    cin>>pilih_sorting;
+    if(pilih_sorting == 1 )
+    {
+            sorting_kode();
+    }
+    if(pilih_sorting == 2)
+    {
+
+            sorting_jumlah();
+
+    }
+
+}
+
+void judul()
+{
+    cout<<"+--------------------------------------------+"<<endl;
+    cout<<"|                                            |"<<endl;
+    cout<<"|          Program Inventaris Gudang         |"<<endl;
+    cout<<"|                                            |"<<endl;
+    cout<<"+--------------------------------------------+"<<endl;
+    cout<<"\n\n";
+}
+
+
+
+void menu_utama()
+{
+menu_gudang:
+    int menu;
+    judul();
+    cout<<"Menu Utama  : "<<endl;
+    cout<<"1. Input Barang"<<endl;
+    cout<<"2. Ambil Barang"<<endl;
+    cout<<"3. Tampil Barang"<<endl;
+    cout<<"4. Hapus Barang"<<endl;
+    cout<<"5. Sorting Barang"<<endl;
+    cout<<"6. Keluar"<<endl;
+    cout<<endl;
+    cout<<"Masukkan Nomor Pilihan : ";
+    cin>>menu;
+    if(menu == 1)
+    {
+        system("cls");
+        judul();
+        input();
+        system("cls");
+        goto menu_gudang;
+    }
+    else if(menu == 2)
+    {
+        system("cls");
+        judul();
+        cout<<endl;
+        ambil();
+        system("cls");
+        goto menu_gudang;
+    }
+    else if(menu == 3)
+    {
+        system("cls");
+        judul();
+        tampil();
+        cout<<endl;
+        system("pause");
+        system("cls");
+        goto menu_gudang;
+    }
+    else if(menu == 4)
+    {
+        system("cls");
+        judul();
+        hapus();
+        cout<<endl;
+        system("pause");
+        system("cls");
+        goto menu_gudang;
+    }
+    else if(menu == 5)
+    {
+
+        system("cls");
+        tampil();
+        sorting();
+        system("pause");
+        system("cls");
+        goto menu_gudang;
+    }
+    else if(menu == 6)
+    {
+        system("cls");
+        exit(0);
+    }
+
+
+}
+
+
+void login()
+{
+
+
+        system("CLS");
+        string a,b;
+        int hasil ;
+        cout << "\n\n";
+        cout << "\tLogin sebagai member" << endl << endl;
+        cout << "\tUsername\t: ";
+        cin >> a;
+        //cin.ignore();
+        cout << "\tPassword\t: ";
+        cin >> b;
+        //cin.ignore();
+
+        for (int i = 0; i < 3; i++)
+        {
+
+            if (a == user.username[i] && b == user.password[i])
+            {
+
+                hasil=1;
+                hasil_login=true;
+                system("CLS");
+                break;
+
+            }
+            else
+            {
+
+                hasil=2;
+            }
+
+        }
+        switch(hasil){
+        case 1 :
+            cout << "\tLogin Sukses" << endl << endl;
+            Sleep(1000);
+            break;
+        case 2 :
+            cout << "\tLogin Gagal" << endl << endl;
+            Sleep(1500);
+            break;
+        }
+
+
+
+}
+
+
+int main()
+{
+
+    while(hasil_login == false)
+    {
+        login();
+    }
+    system("cls");
+
+   menu_utama();
+
+    return 0;
+}
