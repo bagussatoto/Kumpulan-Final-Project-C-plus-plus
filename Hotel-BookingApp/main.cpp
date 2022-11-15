@@ -1,3 +1,8 @@
+// Autor :
+	Bagus Budi Satoto
+	Universitas Amikom Yogyakart
+//
+
 #include <iostream>
 #include <ctime>
 #include <string>
