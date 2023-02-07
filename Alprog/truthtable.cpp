@@ -19,15 +19,8 @@ int main(){
 // Fungsi End Program
 void endProgram(){
     system("cls");
-    cout << "\tKELOMPOK 7";
-    cout << "\n1. Lucky Hanindriyo \t\t\t 21.11.4313 ";
-    cout << "\n2. Ameilia Nurcahyandari Sutomo \t 21.11.4314";
-    cout << "\n3. Alfa Zidan Prasetyo \t\t\t 21.11.4315";
-    cout << "\n4. Muhammad Taufik Hidayat \t\t 21.11.4316 ";
-    cout << "\n5. Faizal Ramadhani Putra Efendi \t 21.11.4317";
-    cout << "\n6. Muhammad Fachrur Riza \t\t 21.11.4318";
-    cout << "\n7. Muhammad Isnaini Daffa Rafsanjani \t 21.11.4320";
-    cout << "\n8. Hisam Saputra \t\t\t 21.11.4321\n";
+    cout << "\tKELOMPOK 0";
+    cout << "\n1. BAGUS BUDI SATOTO \t\t\t 21.11.0000 ";
     cout << "\nTerimakasih telah menggunakan program kami\n\n";
     cout << "Klik Enter untuk keluar dari program";
     cin.ignore();
@@ -159,7 +152,7 @@ void menuProgram(){
     system("cls");
     cout << "=====================================";
     cout << "\n=============== PROJECT =============";
-    cout << "\n============= KELOMPOK 7 ============\n";
+    cout << "\n============= KELOMPOK 0 ============\n";
     cout << "\n1. Truth Tabel";
     cout << "\n2. Hitung Pajak";
     cout << "\n3. Hitung Gaji Karyawan";
