@@ -1,2 +1,4 @@
-##  Kumpulan-Final-Project-C-plus-plus
-## Final Project Pemprograman,Agoritma,Stuktur Data
+##  Kumpulan Final Project C++
+
+- [ ] Agoritma & Pemprograman
+- [ ] Stuktur Data
