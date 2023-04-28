@@ -1,4 +1,4 @@
 ##  Kumpulan Final Project C++
 
-- [ ] Agoritma & Pemprograman
-- [ ] Stuktur Data
+- [x] Algoritma & Pemprograman
+- [x] Stuktur Data
