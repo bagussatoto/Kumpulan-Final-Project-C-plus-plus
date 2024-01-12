@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Kinga\Downloads\tugasprogram c++ 1\07\final project\main.cpp(48,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Kinga\Downloads\tugasprogram c++ 1\07\final project\main.cpp(49,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  final project.vcxproj -> C:\Users\Kinga\Downloads\tugasprogram c++ 1\07\x64\Debug\final project.exe
